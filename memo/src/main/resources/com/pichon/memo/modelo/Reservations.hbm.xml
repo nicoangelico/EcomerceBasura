@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 11, 2018 1:49:04 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pichon.memo.modelo.Reservations" table="reservations" catalog="testconpichon" optimistic-lock="version">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="products" class="com.pichon.memo.modelo.Products" fetch="select">
+            <column name="pid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="users" class="com.pichon.memo.modelo.Users" fetch="select">
+            <column name="uid" not-null="true" />
+        </many-to-one>
+        <property name="reserved" type="date">
+            <column name="reserved" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

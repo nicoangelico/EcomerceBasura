@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 11, 2018 1:49:04 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pichon.memo.modelo.Users" table="users" catalog="testconpichon" optimistic-lock="version">
+        <id name="uid" type="java.lang.Integer">
+            <column name="uid" />
+            <generator class="identity" />
+        </id>
+        <property name="fname" type="string">
+            <column name="fname" length="30" not-null="true" />
+        </property>
+        <property name="lname" type="string">
+            <column name="lname" length="30" not-null="true" />
+        </property>
+        <property name="uname" type="string">
+            <column name="uname" length="30" not-null="true" />
+        </property>
+        <property name="dbirth" type="date">
+            <column name="dbirth" length="10" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" not-null="true" />
+        </property>
+        <set name="reservationses" table="reservations" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="uid" not-null="true" />
+            </key>
+            <one-to-many class="com.pichon.memo.modelo.Reservations" />
+        </set>
+    </class>
+</hibernate-mapping>
